@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: black;
+  color: white;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 2em;
+}
+
+.brand-title {
+  text-transform: capitalize;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2em;
+  list-style: none;
+}
+
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 425px) {
+  header {
+    position: relative;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    right: 2em;
+    z-index: 2;
+    padding: 2em 1em;
+    background-color: transparent;
+    border: 0;
+  }
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    width: 32px;
+    height: 4px;
+    background-color: white;
+    position: relative;
+    left: 0;
+  }
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+  }
+  .hamburger::before {
+    top: 8px;
+  }
+  .hamburger::after {
+    bottom: 8px;
+  }
+  .hamburger.active {
+    transform: rotate(45deg);
+  }
+  .hamburger.active::before {
+    opacity: 0;
+  }
+  .hamburger.active::after {
+    transform: rotate(90deg) translate(8px);
+  }
+  .nav {
+    margin: 0;
+    flex-direction: column;
+    align-items: start;
+    padding-top: min(20vh, 10rem);
+    position: fixed;
+    inset: 0 0 0 50%;
+    background-color: steelblue;
+    transform: translateX(100%);
+    transition: transform 0.2s ease-in-out;
+  }
+  .nav.active {
+    transform: translateX(0);
+  }
+}
